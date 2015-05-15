@@ -3,7 +3,8 @@
 Some experiments with 'node.js' and clojurescript.
 
 ## Setup
-Build it and run node on built js file
+Java, Leiningen and node.js are required.
+Build it and run node.
 ```
 lein cljsbuild once server
 node ./out/server/uked
