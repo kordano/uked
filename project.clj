@@ -14,7 +14,7 @@
   
   :source-paths ["src" "target/classes"]
 
-  :clean-targets ["out/server" "out/server/uked.js" "public/js" "public/js/uked.js"]
+  :clean-targets ["out/server" "out/server/uked.js" "public/js/compiled/out" "public/js/compiled/uked.js"]
 
   :cljsbuild
   {:builds
@@ -31,8 +31,10 @@
     {:id "client"
      :source-paths ["src/client"]
      :compiler
-     {:main uked.core
-      :output-to "public/js/uked.js"
-      :output-dir "public/js"
+     {:output-to "public/js/compiled/uked.js"
+      :output-dir "public/js/compiled/out"
+      :asset-path "js/compiled/out"
+      :externs ["node_modules/deku/index.js"]
+      :main uked.core
       :optimizations :none
       :source-map "public/js/uked.js.map"}}]})
