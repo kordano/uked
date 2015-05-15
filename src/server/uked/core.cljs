@@ -1,12 +1,18 @@
 (ns uked.core
-  (:require [cljs.nodejs :as nodejs]))
+  (:require [cljs.nodejs :as node]))
 
-;; (repl/connect "http://localhost:9000/repl")
+(node/enable-util-print!)
 
-(enable-console-print!)
+(def express (node/require "express"))
+
+(defn respond! [req res]
+  (.send res "Greetings"))
 
 (defn -main []
-  (println "Hello world!"))
+  (let [app (express)]
+    (.get app "/" respond!)
+    (.listen app 3000 (fn [] (println "Server started at localhost:3000")))))
+
 
 (set! *main-cli-fn* -main)
 
