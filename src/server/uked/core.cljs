@@ -2,17 +2,16 @@
   (:require [cljs.nodejs :as node]))
 
 (node/enable-util-print!)
+(enable-console-print!)
 
 (def express (node/require "express"))
 
-(defn respond! [req res]
-  (.send res "Greetings"))
-
-(defn -main []
+(defn -main [port]
   (let [app (express)]
-    (.get app "/" respond!)
-    (.listen app 3000 (fn [] (println "Server started at localhost:3000")))))
-
+    (.use app (.static express "public"))
+    (.listen app port
+             (fn []
+               (println (str "Server started at http://localhost:" port))))))
 
 (set! *main-cli-fn* -main)
 

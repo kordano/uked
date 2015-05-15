@@ -6,14 +6,15 @@
                  [org.clojure/clojurescript "0.0-2755"]]
 
   :node-dependencies [[source-map-support "0.2.8"]
-                      [express "4.12.3"]]
+                      [express "4.12.3"]
+                      [deku "0.2.17"]]
 
   :plugins [[lein-cljsbuild "1.0.4"]
             [lein-npm "0.4.0"]]
   
   :source-paths ["src" "target/classes"]
 
-  :clean-targets ["out/server" "out/server/uked.js"]
+  :clean-targets ["out/server" "out/server/uked.js" "public/js" "public/js/uked.js"]
 
   :cljsbuild
   {:builds
@@ -26,4 +27,12 @@
       :optimizations :simple
       :target :nodejs
       :cache-analysis true
-      :source-map "out/server/uked.js.map"}}]})
+      :source-map "out/server/uked.js.map"}}
+    {:id "client"
+     :source-paths ["src/client"]
+     :compiler
+     {:main uked.core
+      :output-to "public/js/uked.js"
+      :output-dir "public/js"
+      :optimizations :none
+      :source-map "public/js/uked.js.map"}}]})
