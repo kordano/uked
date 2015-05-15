@@ -9,3 +9,4 @@ pom.xml
 .lein-plugins/
 /node_modules
 *-init.clj
+/public/js
