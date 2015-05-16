@@ -1,6 +1,8 @@
 (ns uked.core
   (:require [cljs.nodejs :as node]))
 
+(def DEFAULT-PORT 3000)
+
 (node/enable-util-print!)
 (enable-console-print!)
 
@@ -9,9 +11,10 @@
 (defn -main [port]
   (let [app (express)]
     (.use app (.static express "public"))
-    (.listen app port
+    (.listen app (or port DEFAULT-PORT)
              (fn []
-               (println (str "Server started at http://localhost:" port))))))
+               (println
+                (str "Server started at http://localhost:" (or port DEFAULT-PORT)))))))
 
 (set! *main-cli-fn* -main)
 
