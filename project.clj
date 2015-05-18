@@ -34,7 +34,6 @@
      {:output-to "public/js/compiled/uked.js"
       :output-dir "public/js/compiled/out"
       :asset-path "js/compiled/out"
-      :externs ["node_modules/deku/index.js"]
       :main uked.core
       :optimizations :none
-      :source-map "public/js/uked.js.map"}}]})
+      :source-map "public/js/compiled/uked.js.map"}}]})

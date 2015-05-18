@@ -11,6 +11,7 @@
 (defn -main [port]
   (let [app (express)]
     (.use app (.static express "public"))
+    (.use app (.static express "node_modules/deku"))
     (.listen app (or port DEFAULT-PORT)
              (fn []
                (println
