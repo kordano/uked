@@ -17,5 +17,3 @@
     (.render js/deku app (.-body js/document))))
 
 (main-view hello-world)
-
-
